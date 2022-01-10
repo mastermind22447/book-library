@@ -1,0 +1,42 @@
+{% extends 'base/base.html' %}
+{% block content %}
+    <form name="form" method="POST" action="/books/update/{{book.id}}/" id="form"> {% csrf_token %}
+        <h1>{{book.title}}</h1>
+        
+        {{form.as_p}} 
+
+        {% comment %} <div class="input-group flex-nowrap">
+            <span class="input-group-text" id="addon-wrapping">Title: </span>
+            <input type="text" class="form-control" name="title" value="{{book.title}}">
+        </div>
+        <br>
+
+        <div class="input-group flex-nowrap">
+            <span class="input-group-text" id="addon-wrapping">Price: </span>
+            <input type="text" class="form-control" name="price" value="{{book.price}}">
+        </div>
+
+        <br>
+
+        <div class="input-group flex-nowrap">
+            <span class="input-group-text" id="addon-wrapping">Author: </span>
+            <input type="text" class="form-control" name="author" value="{{book.author}}">
+        </div>
+
+        <br>
+
+        <div class="input-group flex-nowrap">
+            <span class="input-group-text" id="addon-wrapping">Kind: </span>
+            <input type="text" class="form-control" name="kind" value="{{book.kind}}">
+        </div>
+
+        <br> {% endcomment %}
+
+        <button type="submit" class="btn btn-primary active">Update Price</button>
+    </form>
+
+    <br>
+    <br>
+    <a href="http://localhost:8000/books/">Back</a>
+
+{% endblock %}

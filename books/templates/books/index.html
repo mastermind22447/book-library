@@ -1,0 +1,42 @@
+ {% extends 'base/base.html' %}
+
+ {% block content %}
+<a href="http://localhost:8000/books/add/" class="btn btn-info">Add</a>
+ <table class="table table table-bordered" id="book">
+     
+     <tbody>
+         <tr class="table-active">
+             <th width="10">#</th>
+             <td>Books</td>
+             <td>Available</td>
+             <td>Author</td>
+             <td>Price</td>
+             <td>Kind</td>
+             <td>Year</td>
+             <td>EDIT</td>
+             <td>DELET</td>
+
+         </tr>
+         {% for book in books %}
+         <tr>
+             <th>{{ forloop.counter }}</th>
+             <td><a href="http://localhost:8000/books/detail/{{book.id}}">{{book.title}}</a></td>
+             <td>{{book.availabe}}</td>
+             <td>{{book.author}}</td>
+             <td>{{book.price}}</td>
+             <td>{{book.kind}}</td>
+             <td>{{book.year}}</td>
+
+             <td>
+                 <a href="http://localhost:8000/books/edit/{{book.id}}">EDIT</a>
+             </td>
+             <td>
+                 <a href="http://localhost:8000/books/delete/{{book.id}}">DELETE</a>
+             </td>
+         </tr>
+         {% endfor %}
+     </tbody>
+ </table>
+
+
+ {% endblock %}

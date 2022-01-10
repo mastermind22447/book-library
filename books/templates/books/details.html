@@ -1,0 +1,41 @@
+{% extends 'base/base.html' %}
+{% block content %}
+    <h1>{{book.title}}</h1>
+    <div class="input-group flex-nowrap">
+        <span class="input-group-text" id="addon-wrapping">Title: </span>
+        {{book.title}}
+    </div>
+    <br>
+
+    <div class="input-group flex-nowrap">
+        <span class="input-group-text" id="addon-wrapping">Price: </span>
+        {{book.price}}
+    </div>
+
+    <br>
+
+    <div class="input-group flex-nowrap">
+        <span class="input-group-text" id="addon-wrapping">Author: </span>
+        {{book.author}}
+    </div>
+
+    <br>
+
+    <div class="input-group flex-nowrap">
+        <span class="input-group-text" id="addon-wrapping">Kind: </span>
+        {{book.kind}}
+    </div>
+
+    <br>
+    <div class="input-group flex-nowrap">
+        <span class="input-group-text" id="addon-wrapping">Year: </span>
+        {{book.year}}
+    </div>
+
+    <br>
+
+    <br>
+    <br>
+    <a href="http://localhost:8000/books/">Back</a>
+
+{% endblock %}
