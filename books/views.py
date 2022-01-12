@@ -58,18 +58,14 @@ def book_update(request, book_id):
     print("Request: ", request.POST)
 
     # prints requested QueryDict of books objects.
-
-    if request.method == 'POST':
-        form = BookForm(request.POST)
-        if form.is_valid():
-            form.save()
+    form = BookForm(request.POST, instance=book)     
+    if form.is_valid():
+        form.save()
     
-    # checks if method of request.POST is True, create a form based on BookForm in forms that contain book objects
-    # and checkes if forms data is ok then saves data in db
-            
+    # checks if method of request.POST is True,             
     return redirect('book-home')
 
-    # return to book-home url
+
 
 def book_delete(request, book_id):
 
