@@ -15,6 +15,10 @@
 <body>
     <div class="container">
         <h1 style="text-align: center; padding: 20px 0;">HASAN</h1>
+        <form class="d-flex" method="POST" action="{% url 'search-book'%}"> {% csrf_token %}
+            <input class="form-control me-2" type="search" placeholder="Search Books" arial-label="Search" name="searched">
+            <button class="btn btn-outline-success" type="submit">Search</button> 
+        </form>
         
         {% block content %} {% endblock %}
         

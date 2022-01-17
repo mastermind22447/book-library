@@ -1,3 +1,5 @@
+from re import search
+from unicodedata import name
 from django.http import HttpResponse
 from .models import Book
 from django.shortcuts import redirect, render
@@ -53,16 +55,16 @@ def book_edit(request, book_id):
 def book_update(request, book_id):
 
     book = Book.objects.get(pk=book_id)
-    # create a QueryDict of books that gets book objects from db based on their ID.
+    
     
     print("Request: ", request.POST)
 
-    # prints requested QueryDict of books objects.
+    
     form = BookForm(request.POST, instance=book)     
     if form.is_valid():
         form.save()
     
-    # checks if method of request.POST is True,             
+                
     return redirect('book-home')
 
 
@@ -76,7 +78,7 @@ def book_delete(request, book_id):
 
 
 
-def book_add(request):
+def book_add(request, book_name):
     form = BookForm(request.POST or None)
     if form.is_valid():
         form.save()
@@ -108,3 +110,12 @@ def book_insert(request):
     print(f"title: {title} price: {price}")
     
     return redirect('book-home')
+
+def book_search(request):
+    if request.method == "POST":
+        searched = request.POST.get('searched', False)
+        books = Book.objects.filter(title__contains=searched)
+        
+        return render(request, 'books/search.html', {'searched' : searched ,'books': books})
+    else:
+        return render(request, 'books/search.html', {})
